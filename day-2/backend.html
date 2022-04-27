@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .navbar{
+            display: flex;
+            justify-content: space-around;
+            background-color: rgb(56, 24, 56);
+            margin: auto;
+            padding: 30px;
+            font-size: 40px;
+
+        }
+        .navbar>div>a{
+            color: antiquewhite;
+        }
+        
+        input{
+            width: 50%;
+            height: 50px;
+            text-align: center;
+            display: block;
+            margin: auto;
+            font-size: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div><a href="backend.html">Backend</a></div>
+        <div><a href="frontend.html">Frontend</a></div>
+    </div>
+  
+    <form id="form">
+        <input type="text" id="name" placeholder="enter Name of investor">
+        <input type="text" id="imgurl" placeholder="enter img url of invetor">
+        <input type="text" id="role" placeholder="role of investor">
+        <input type="text" id="company_logo" placeholder="company logo url">
+        <input type="submit">
+       
+    </form>
+</body>
+</html>
+<script>
+  var form = document.querySelector("#form")
+  var investorArr = JSON.parse(localStorage.getItem("investdata"))||[]
+
+  function display(arr){
+    investorArr.push(arr)
+  localStorage.setItem("investdata",JSON.stringify(investorArr))
+
+  }
+  form.addEventListener("submit",function(event){
+      event.preventDefault()
+      var arr = {
+          name:form.name.value,
+          img:form.imgurl.value,
+          role:form.role.value,
+          logo_img:form.company_logo.value,
+      }
+      display(arr)
+  })
+
+</script>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .report{
+            width: auto;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: auto;
+            gap: 40px;
+            text-align: center;
+            margin-top: 40px;
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+        .report>div{
+           border-radius: 20px;
+           box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;  
+        }
+        .report>div>p{
+            color: grey;
+        }
+        p+img{
+            width: 100px;
+        }
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .navbar{
+            display: flex;
+            justify-content: space-around;
+            background-color: rgb(56, 24, 56);
+            margin: auto;
+            padding: 30px;
+            font-size: 40px;
+
+        }
+        .navbar>div>a{
+            color: antiquewhite;
+        }
+        h1{
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div><a href="backend.html">Backend</a></div>
+        <div><a href="frontend.html">Frontend</a></div>
+    </div>
+   <div class="report"></div>
+  
+</body>
+</html>
+<script>
+    var X =  JSON.parse(localStorage.getItem("investdata"))
+    
+    
+   X.forEach(function(ele){
+    var parent = document.createElement("div")
+       var Name_in = document.createElement("h1")
+       Name_in.innerText=ele.name
+       
+       var img_in = document.createElement("img")
+       img_in.src = ele.img
+       
+       var role_in = document.createElement("p")
+       role_in.innerText = ele.role
+        
+       var role_img_in = document.createElement("img")
+       role_img_in.src = ele.logo_img
+       
+       parent.append(img_in,Name_in,role_in,role_img_in)
+       document.querySelector(".report").append(parent)
+    })
+     
+
+ 
+    
+ 
+</script>
