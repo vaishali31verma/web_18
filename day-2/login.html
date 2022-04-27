@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+           .logo{
+               display: block;
+               text-align: center;
+               margin: auto;
+               margin-top: 90px;
+           }
+           .logo+div{
+            display: block;
+               text-align: center;
+               margin: auto;
+               box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+               width: 35%;
+               height: 600px;
+           }
+           p{
+               margin-bottom: 0px;
+               display: block;
+               text-align: start;
+               margin-left: 70px;
+               color: rgb(80, 74, 74);
+               margin-right:  70px;
+           }
+           input{
+               width: 70%;
+               height: 50px;
+               border: 1px solid grey;
+               border-radius: 10px;
+             
+           }
+           h3{
+               padding-top: 30px;
+               font-weight: bold;
+           }
+           #submit{
+               background-color: rgb(8, 72, 157);
+               color: white;
+               margin-top: 40px;
+           }
+    </style>
+</head>
+<body>
+    <img src="https://www.masaischool.com/img/navbar/logo.svg" class="logo">
+   <div>
+      <h3>Login</h3>
+   
+        <form id="form">
+            <p>Email</p>
+            <input type="email" id="email" placeholder="Enter your email">
+            <p>password</p>
+            <input type="password" placeholder="Enter Password" id="password">
+            <input type="submit" value="login" id="submit">
+        </form>
+        <p>Already a account ?   <a href="">  signing</a></p>
+      
+   </div>
+
+</body>
+</html>
+<script>
+    function display(datobjlog){
+      var X=JSON.parse(localStorage.getItem("userdata"))
+      X.forEach(function(el){
+          if((el.email===datobjlog.emaillog) && (el.pass === datobjlog.passlog)){
+              alert("sucessfully login")
+             
+          }
+          else{
+            alert("Wrong crediential")
+          }
+      })
+   }
+  var form = document.querySelector("#form")
+   form.addEventListener("submit",function(event){
+        event.preventDefault()
+        var datobjlog = {
+            emaillog:form.email.value,
+            passlog:form.password.value
+        }
+        display(datobjlog)
+   })
+
+   
+
+</script>
