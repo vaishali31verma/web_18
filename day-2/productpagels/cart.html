@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-row: auto;
+            gap:  50px;  
+        }
+        #container>div>h6{
+           
+           margin-top: 0px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Cart item</h2>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+    var total =0
+    var X=JSON.parse(localStorage.getItem("cartdata")) ||[]
+    console.log(X)
+    X.forEach(function(ele){
+    var parent = document.createElement("div")
+
+    imageitem = document.createElement("img")
+    imageitem.src = ele.image_url
+
+    nameitem = document.createElement("h6")
+    nameitem.innerText = ele.name
+
+    priceitem = document.createElement("h6")
+    priceitem.innerText=ele.price
+
+    strikedoffprice = document.createElement("h6")
+    strikedoffprice.innerText=ele.strikedoffprice
+
+    parent.append(imageitem,nameitem,priceitem,strikedoffprice)
+   container.append(parent)
+     
+  })
+  
+
+</script>
